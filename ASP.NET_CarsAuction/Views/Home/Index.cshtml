@@ -1,0 +1,44 @@
+﻿@model IPagedList<ASP.NET_CarsAuction.Models.Car>
+
+@using PagedList.Mvc;
+@using PagedList;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <p>
+        @Html.ActionLink("Добавить лот", "Create", null, new { @class = "btn btn-warning" })
+        <div class="btn-group btn-group-justified">
+            @Html.ActionLink("Все авто", "Index", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Седан", "AutoSedan", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Купе", "AutoCupe", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Универсал", "AutoUniversal", null, new { @class = "btn btn-danger" })
+        </div>
+    </p>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-6 col-sm-6 col-lg-4">
+                <div class="thumbnail background_style">
+                    <img src=@item.Img alt="...">
+                    <div class="caption">
+                        <h3>@item.Name</h3>
+                        <p>@item.ShortDesc</p>
+                        <strong>Текущая ставка:</strong>
+                        <p>@item.Price.ToString("c")</p>
+                        <p>@Html.ActionLink("Перейти к лоту", "Details", new { id = item.Id }, new { @class = "btn btn-danger" })</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<br />
+@Html.PagedListPager(Model, page =>Url.Action("Index", new { page }))
+
+

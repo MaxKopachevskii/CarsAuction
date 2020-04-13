@@ -1,0 +1,90 @@
+﻿@model ASP.NET_CarsAuction.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+    <div>
+        @Html.ActionLink("Назад к лотам", "Index", null, new { @class = "btn btn-danger" })
+        <center><h2 style="color:white"><strong>@Model.Name</strong></h2></center>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="thumbnail background_style">
+                    <img src=@Model.Img alt="...">
+                    <div class="caption">
+                        <h3>@Model.Name</h3>
+                        <p>@Model.ShortDesc</p>
+                        <strong>Описание:</strong>
+                        <p>@Model.LongDesc</p>
+                        <strong>Текущая ставка:</strong>
+                        <p>@Html.DisplayFor(model => model.Price)</p>
+                        <strong>Категория автомобиля:</strong>
+                        <p>@Model.Categoty.Name</p>
+                        <p>@Html.ActionLink("Сделать ставку", "RateForm", new { id = Model.Id }, new { @class = "btn btn-danger" })</p>
+                        <strong>Последняя ставка была сделана пользователем:</strong>
+                        <p>@Model.UserName  @Model.DateTimeLot </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoty.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoty.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
